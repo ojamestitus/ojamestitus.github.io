@@ -1,0 +1,64 @@
+\documentclass[12pit]{beamer}
+\usetheme{Singapore}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\title{About Me}
+
+\author{Oliver Titus}
+\date{October 26, 2020}
+\begin{document}
+
+<<setup, include=FALSE>>=
+library(knitr)
+opts_chunk$set(fig.path='images',fig.align='center',fig.show='hold',size='footnotesize')
+@
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item Birthday: March 14, 1998
+\vfill
+\item Where I grew up: Templeton, Massachusetts
+\vfill
+\item Program I'm currently in: Statistics MS
+\vfill
+\item Expected graduation date: May 2022
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Favorite Animal}
+\begin{center}
+\includegraphics[scale=0.05]{20190824_133354.jpg}
+\end{center}
+\begin{itemize}
+\item This is Pepper, my sister's beagle. Beagles are my favorite breed of dogs. Don't mind my sister photobombing in the background!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Favorite Plot}
+<<echo=FALSE,results='hide'>>=
+if (!"palmerpenguins" %in% installed.packages()) {
+  remotes::install_github("allisonhorst/palmerpenguins")
+}
+library(palmerpenguins)
+library(ggplot2)
+@
+
+<<plot,fig.width=6,fig.height=6,out.width='.65\\linewidth', echo=FALSE, results='hide', warning=FALSE>>=
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm)) + geom_point(color="yellow", size=4) + theme(panel.background = element_rect(fill="salmon"), panel.grid.major = element_line(colour = "blue", size=1.5), panel.grid.minor = element_line(colour = "green")) + ggtitle("Penguin Body Mass vs Bill Length") + xlab("Body Mass (g)") + ylab("Bill Length (mm)")
+@
+\end{frame}
+
+\begin{frame}
+\frametitle{Link to my CV}
+You can find my CV at:
+\end{frame}
+\end{document}
